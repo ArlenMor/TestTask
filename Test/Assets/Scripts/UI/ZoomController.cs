@@ -32,6 +32,8 @@ namespace UI
 
             if(Input.touchCount == 2)
             {
+                //фиксируем касания. При помощи векторов находим разницу, между изночальным
+                //тапом и перемещённым. исходдя из этой разницы приближаем или отдаляем
                 Touch touchZero = Input.GetTouch(0);
                 Touch touchOne = Input.GetTouch(1);
 
@@ -44,9 +46,10 @@ namespace UI
                 float difference = currentMagnitude - prevMagnitude;
                 ZoomCamera(difference * 0.01f);
             }
-
+            //зум благодаря колесу мыши
             ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
-
+            
+            //зум через кнопки
             if (Zoom[0].plusZoom)
                 ZoomCamera(0.015f);
             if (Zoom[1].minusZoom)
